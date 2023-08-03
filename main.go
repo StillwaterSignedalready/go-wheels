@@ -1,7 +1,11 @@
 package main
 
-import "github.com/StillwaterSignedalready/go-wheels/yes"
+import (
+	"os"
+
+	"github.com/StillwaterSignedalready/go-wheels/yes"
+)
 
 func main() {
-	yes.Chatter()
+	yes.Chatter(os.Stdout)
 }

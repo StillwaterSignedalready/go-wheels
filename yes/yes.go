@@ -1,13 +1,14 @@
 package yes
 
 import (
+	"io"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 )
 
-func Chatter() {
+func Chatter(w io.Writer) {
 	sigChan := make(chan os.Signal, 1)
 	stopTiming := time.Now().Add(time.Second * 3)
 
@@ -18,7 +19,7 @@ func Chatter() {
 	}()
 
 	for time.Now().Before(stopTiming) { // while()
-		os.Stdout.Write([]byte("y\n"))
+		w.Write([]byte("y\n"))
 		// os.Stdout.Sync() // flush buffer content to terminal
 	}
 
